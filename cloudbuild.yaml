@@ -33,12 +33,42 @@ steps:
 
 
 
+# [START cloudbuild-trigger-cd]
+# This step clones the hello-cloudbuild-env repository
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Clone env repository
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    gcloud source repos clone laravel-app && \
+    cd laravel-app && \
+    git checkout main && \
+    git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # This step updates kubernetes with new sha tag
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Print manifest1
   entrypoint: /bin/sh
   args:
-  - 'cat laravel-app/kubernetes.yaml'
+  - 'cat kubernetes.yaml'
 
 
 
@@ -59,7 +89,7 @@ steps:
   id: Print manifest2
   entrypoint: /bin/sh
   args:
-  - 'cat laravel-app/kubernetes.yaml'    
+  - 'cat kubernetes.yaml'    
 
 # This step pushes the manifest back to code repo
 #- name: 'gcr.io/cloud-builders/gcloud'
