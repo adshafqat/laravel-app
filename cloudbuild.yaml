@@ -54,6 +54,8 @@ steps:
   - |
     set -x && \
     git add kubernetes.yaml && \
+    git config --global user.email info@zaynsolutions.com && \
+    git config --global user.name Adeel Shafqat && \
     git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository laravel-app
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
