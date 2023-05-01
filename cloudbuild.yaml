@@ -53,7 +53,7 @@ steps:
   - '-c'
   - |
     set -x && \
-    cd laravel-app && \
+#    cd laravel-app && \
     git add kubernetes.yaml && \
     git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository laravel-app
