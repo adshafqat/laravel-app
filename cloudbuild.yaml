@@ -43,7 +43,7 @@ steps:
   - |
     gcloud source repos clone laravel-app && \
     cd laravel-app && \
-    git checkout main && \
+    git checkout master && \
     git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
 
 
