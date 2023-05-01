@@ -30,11 +30,8 @@ steps:
 # [END cloudbuild]
 
 
-
-
-
 # [START cloudbuild-trigger-cd]
-# This step clones the hello-cloudbuild-env repository
+# This step clones the repository
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Clone env repository
   entrypoint: /bin/sh
@@ -45,6 +42,7 @@ steps:
     cd laravel-app && \
     git checkout  && \
     git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Generate manifest
@@ -54,27 +52,6 @@ steps:
   - |
      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml | \
      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > laravel-app/kubernetes.yaml
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
