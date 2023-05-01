@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: laravel-app
-        image: us-central1-docker.pkg.dev/devops2-385401/laravel-repository/laravel-app:latest
+        image: us-central1-docker.pkg.dev/GOOGLE_CLOUD_PROJECT/laravel-repository/laravel-app:COMMIT_SHA
         ports:
         - containerPort: 8080
         imagePullPolicy: Always  
