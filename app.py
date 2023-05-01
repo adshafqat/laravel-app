@@ -18,7 +18,7 @@ app = Flask('laravel-app')
 
 @app.route('/')
 def hello():
-  return "Hi my friend!\n"
+  return "Hi my friend\n"
 
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', port = 8080)
