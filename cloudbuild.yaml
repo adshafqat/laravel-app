@@ -15,7 +15,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:$SHORT_SHA'
   - '.'
 
 
@@ -26,7 +26,7 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:$SHORT_SHA'
 # [END cloudbuild]
 
 
