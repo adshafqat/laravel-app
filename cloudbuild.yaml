@@ -28,3 +28,25 @@ steps:
   - 'push'
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:$SHORT_SHA'
 # [END cloudbuild
+
+
+
+
+
+
+
+
+
+
+# This step deploys the new version of our container image
+# in the hello-cloudbuild Kubernetes Engine cluster.
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy
+  args:
+  - 'apply'
+  - '-f'
+  - 'kubernetes.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=laravel-gke'
+
