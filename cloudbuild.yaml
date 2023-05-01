@@ -42,25 +42,24 @@ steps:
   - '-c'
   - |
     sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml | \
-    sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml | \
-    cat kubernetes.yaml
+    sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml 
     
 
 # This step pushes the manifest back to code repo
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: Push manifest
-  entrypoint: /bin/sh
-  args:
-  - '-c'
-  - |
-    set -x && \
-    git add kubernetes.yaml && \
-    git config --global user.email info@zaynsolutions.com && \
-    git config --global user.name Adeel Shafqat && \
-    git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:${SHORT_SHA}
-    Built from commit ${COMMIT_SHA} of repository laravel-app
-    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
-    git push origin master
+#- name: 'gcr.io/cloud-builders/gcloud'
+#  id: Push manifest
+#  entrypoint: /bin/sh
+#  args:
+#  - '-c'
+#  - |
+#    set -x && \
+#    git add kubernetes.yaml && \
+#    git config --global user.email info@zaynsolutions.com && \
+#    git config --global user.name Adeel Shafqat && \
+#    git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/laravel-repository/laravel-app:${SHORT_SHA}
+#    Built from commit ${COMMIT_SHA} of repository laravel-app
+#    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+#    git push origin master
 
 
 # This step deploys the new version of our container image
