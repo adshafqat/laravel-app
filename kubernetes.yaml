@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: laravel-app
-        image: us-central1-docker.pkg.dev/GOOGLE_CLOUD_PROJECT/laravel-repository/laravel-app:COMMIT_SHA
+        image: us-central1-docker.pkg.dev/cloudshell-6934/laravel-repository/laravel-app:COMMIT_SHA
         ports:
         - containerPort: 8080
 ---
