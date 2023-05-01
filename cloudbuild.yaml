@@ -33,6 +33,14 @@ steps:
 
 
 
+# This step updates kubernetes with new sha tag
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Print manifest1
+  entrypoint: /bin/sh
+  args:
+  - 'cat laravel-app/kubernetes.yaml'
+
+
 
 # This step updates kubernetes with new sha tag
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -48,10 +56,10 @@ steps:
 
 # This step updates kubernetes with new sha tag
 - name: 'gcr.io/cloud-builders/gcloud'
-  id: Print manifest
+  id: Print manifest2
   entrypoint: /bin/sh
   args:
-  - 'cat kubernetes.yaml'    
+  - 'cat laravel-app/kubernetes.yaml'    
 
 # This step pushes the manifest back to code repo
 #- name: 'gcr.io/cloud-builders/gcloud'
