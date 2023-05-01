@@ -68,7 +68,7 @@ steps:
   id: Print manifest1
   entrypoint: /bin/sh
   args:
-  - 'cat kubernetes.yaml'
+  - 'cat /workspace/laravel-app/kubernetes.yaml'
 
 
 
@@ -79,8 +79,8 @@ steps:
   args:
   - '-c'
   - |
-    sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml | \
-    sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml 
+    sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" /workspace/laravel-app/kubernetes.yaml | \
+    sed "s/COMMIT_SHA/${SHORT_SHA}/g" > /workspace/laravel-app/kubernetes.yaml 
 
 
 
@@ -89,7 +89,7 @@ steps:
   id: Print manifest2
   entrypoint: /bin/sh
   args:
-  - 'cat kubernetes.yaml'    
+  - 'cat /workspace/laravel-app/kubernetes.yaml'    
 
 # This step pushes the manifest back to code repo
 #- name: 'gcr.io/cloud-builders/gcloud'
